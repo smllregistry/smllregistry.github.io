@@ -28,6 +28,7 @@ function onLoad() {
     for (data of json) {
       make_component(data, search)
     }
+    document.body.innerHTML = `<div id="snackbar">Some text some message..</div>`
   }).catch(error => {
     console.error('Error loading file:', error);
   });
