@@ -67,10 +67,10 @@ const make_component = (data, search) => {
       <h3 class="Header">${name}</h3> 
       <div class="CardInner">
       <label><i class="fa-regular fa-user"></i>${author}</label>
-      <label><i class="fa-brands fa-git-alt"></i> <a href="${url}"> Project Repo </a> </label>
+      <label><i class="fa-brands fa-github"></i> <a href="${url}">Package location</a> </label>
         <label>
           <i class="fa-solid fa-copy fa-bounce"></i> 
-          <code>${name} = "${version}"</code>
+          <code onclick="copy(this)">${name} = "${version}"</code>
         </label>
         <label><i class="fa-solid fa-circle-info"></i>${about}</label>
        </div>
