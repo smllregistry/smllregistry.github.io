@@ -1,5 +1,3 @@
-
-
 function onLoad() {
   const urlParams = new URLSearchParams(window.location.search);
   let search = urlParams.get('search');
@@ -26,13 +24,14 @@ function onLoad() {
     let json = JSON.parse(data);
     json = json .sort(compare)
 
-    let found = false
+    let found = 0
     for (data of json) {
-      found = make_component(data, search)
+      if (make_component(data, search))
+        found += 1  
     }
-
-    if (!found) {
-      document.body.innerHTML = `<div class='container container-dark p-y-md'>
+    if (found == 0) {
+      document.body.innerHTML = 
+      `<div class='container container-dark p-y-md'>
         <div>
           <p>No packages found for search: <b>${search}</b></p>
         </div>
