@@ -78,6 +78,7 @@ const make_component = (data, search) => {
   let component = `
     <div class='container container-dark p-y-md'>
       <div>
+        <h1>${name}</h1>
         <p><i class="fa-regular fa-user"></i>${author}</p>
         <p><i class="fa-brands fa-github"></i> <a href="${url}">Package location</a> </p>
         <p>
