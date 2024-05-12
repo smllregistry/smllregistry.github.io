@@ -8,4 +8,9 @@ function find() {
   document.location.href = url
 }
 
-
+searchbox.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    find()
+  }
+}); 

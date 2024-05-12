@@ -25,9 +25,21 @@ function onLoad() {
   }).then(data => {
     let json = JSON.parse(data);
     json = json .sort(compare)
+
+    let found = false
     for (data of json) {
-      make_component(data, search)
+      found = make_component(data, search)
     }
+
+    if (!found) {
+      document.body.innerHTML = `<div class='container container-dark p-y-md'>
+        <div>
+          <p>No packages found for search: <b>${search}</b></p>
+        </div>
+      </div>`
+      return 
+    }
+
     document.body.innerHTML += `<div id="snackbar">To Be Replaced</div>`
   }).catch(error => {
     console.error('Error loading file:', error);
@@ -60,23 +72,24 @@ const make_component = (data, search) => {
     && author.indexOf(search) == -1  
     && about.indexOf(search) == -1  
     && version.indexOf(search) == -1  
-  ) return;
+  ) return false;
 
 
   let component = `
-    <div class="Card">
-      <h3 class="Header">${name}</h3> 
-      <div class="CardInner">
-      <label><i class="fa-regular fa-user"></i>${author}</label>
-      <label><i class="fa-brands fa-github"></i> <a href="${url}">Package location</a> </label>
-        <label>
+    <div class='container container-dark p-y-md'>
+      <div>
+        <p><i class="fa-regular fa-user"></i>${author}</p>
+        <p><i class="fa-brands fa-github"></i> <a href="${url}">Package location</a> </p>
+        <p>
           <i class="fa-solid fa-copy fa-bounce"></i> 
           <code onclick="copy(this)">${name} = "${version}"</code>
-        </label>
-        <label><i class="fa-solid fa-circle-info"></i>${about}</label>
-       </div>
-    </div>`
+        </p>
+        <p><i class="fa-solid fa-circle-info"></i>${about}</p>
+      </div>
+    </div>
+`
 
   document.body.innerHTML += component
+  return true
 }
 

@@ -1,186 +1,193 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
 
-* {
-	 -webkit-font-smoothing: antialiased;
-	 color: #acbdce;
-}
 
-:root {
-	 --border-radius: 10px;
-}
- 
-body, html {
-	 background: #e2e9f4;
-	 display: grid;
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
-i {
-  padding: 2%;
+.no-flow {
+  overflow: hidden;
 }
 
-code {
-  border-width: 1px;
-  border-style: inset;
-  border-radius: 15px;
-  padding: 2%;
-  border-color: linear-gradient(-67deg, rgba(200, 216, 231, .7), rgba(255, 255, 255, .8));
-  font-family: "Orbitron", sans-serif;
-  /* display: block; */
-  color: #3c4b66;
+.flow-scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.Grid {
-	 grid-template-columns: 33% 33% 33%;
-   gap: 5px;
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #2d2d2d;
+  letter-spacing: 0.2px;
+  background-image: 
+  url('https://img.freepik.com/free-vector/abstract-geometric-pattern_1319-110.jpg?w=740&t=st=1715503724~exp=1715504324~hmac=0c510c9538fbb5ce0ecf6c8257d6bef4796e2c16f048f36a493fa089616f6117')
+  ;
+  /* Search Active */
 }
-
-@media (max-width: 500px) {
-  body > * {
-    border: 1px solid red;
-  }
-  .Grid {
-    grid-template-columns: 100%;
-    gap: 2px;
-    display: block;
-  }
+body.search-active {
+  overflow: hidden;
 }
-
-.Center-items {
-	 grid-template: 1fr/100%;
+body.search-active .search-input {
+  opacity: 1;
+  transform: none;
+  pointer-events: all;
 }
-
-.Center {
-  margin: auto auto;
-  translate: 0% 50%;
+body.search-active .icon-close {
+  opacity: 1;
+  transform: rotate(-90deg);
 }
-
-.Card {
-	 padding: 1px;
-	 border-radius: var(--border-radius);
-	 background: linear-gradient(-67deg, rgba(200, 216, 231, .7), rgba(255, 255, 255, .8));
-	 overflow: hidden;
-	 box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 12px #c8d8e7;
-	 width: 380px;
+body.search-active .control {
+  cursor: default;
 }
- 
-.CardInner {
-	 padding: 16px 16px;
-	 background-color: #e2e9f4;
-	 border-radius: var(--border-radius);
+body.search-active .control .btn-material {
+  transform: scale(70);
 }
- 
+body.search-active .control .icon-material-search {
+  opacity: 0;
+}
+/* Close Icon */
+.icon-close {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 70px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+.icon-close:hover {
+  transform: rotate(0);
+}
+/* Search Input */
+.search-input {
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  margin-top: -40px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(40px, 0);
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+.search-input input {
+  color: #fff;
+  font-size: 54px;
+  border: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  outline: 0;
+  font-weight: 200;
+}
+.search-input ::-webkit-input-placeholder {
+  color: #EEE;
+}
+.search-input :-moz-placeholder {
+  color: #EEE;
+  opacity: 1;
+}
+.search-input ::-moz-placeholder {
+  color: #EEE;
+  opacity: 1;
+}
+.search-input :-ms-input-placeholder {
+  color: #EEE;
+}
+/* Container */
 .container {
-	 display: flex;
-}
- 
-.Icon {
-	 min-width: 46px;
-	 min-height: 46px;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-	 border-radius: var(--border-radius);
-	 margin-right: 12px;
-	 box-shadow: -2px -2px 6px rgba(255, 255, 255, .6), 2px 2px 12px #c8d8e7;
-}
- 
-.Icon svg {
-	 transform: translate(-1px, -1px);
-}
- 
-label {
-	 font-family: "Hind", sans-serif;
-	 display: block;
-	 color: #3c4b66;
-	 margin-bottom: 12px;
-	 background: linear-gradient(45deg, rgba(107, 123, 143, 1), #3c4b66);
-	 -webkit-background-clip: text;
-	 -webkit-text-fill-color: transparent;
+  padding-right: 50px;
+  padding-left: 50px;
+  position: relative;
+  margin-right: 1.5%;
+  z-index: 2;
 }
 
-
-.Header {
-	 font-family: "Orbitron", sans-serif;
-   text-align: center;
-	 display: block;
-	 color: #3c4b66;
+.container.container-dark {
+  /* background: #22313F; */
+  color: #FFF;
+  background-image: linear-gradient(90deg, rgb(210, 184, 131) 50%, rgba(0, 0, 0, 0.73)),
+  url('https://img.freepik.com/free-vector/abstract-geometric-pattern_1319-110.jpg?w=740&t=st=1715503724~exp=1715504324~hmac=0c510c9538fbb5ce0ecf6c8257d6bef4796e2c16f048f36a493fa089616f6117')
+  ;
+  border-style: solid;
+  border-width: 2px;
+  border-image: linear-gradient(190deg, rgb(210, 184, 131) rgba(0, 0, 0, 0.73));
+  display: grid;
+  grid-template-columns: 70% 30%; 
 }
 
-.Info {
-	 font-family: "Hind", sans-serif;
-	 display: block;
-	 color: #3c4b66;
+/* Control btn */
+.control {
+  cursor: pointer;
+}
+.control .btn-material {
+  position: absolute;
+  top: -30px;
+  width: 60px;
+  height: 60px;
+  right: 60px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  background: rgb(210, 184, 131);
+  outline: 0;
+  transform-origin: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+.control .btn-material:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.control .icon-material-search {
+  color: #FFF;
+  position: absolute;
+  top: -10px;
+  right: 78px;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+}
+/* Utilities */
+.p-y-md {
+  padding-top: 2.8rem;
+  padding-bottom: 2.8rem;
+}
+/* Typo */
+h1, h2 {
+  font-weight: 300;
 }
 
- 
-.InputContainer {
-	 width: 100%;
-}
- 
-input {
-	 background-color: #e3edf7;
-	 padding: 16px 32px;
-	 border: none;
-	 display: block;
-	 font-family: 'Orbitron', sans-serif;
-	 font-weight: 600;
-	 color: #a9b8c9;
-	 -webkit-appearance: none;
-	 transition: all 240ms ease-out;
-	 width: 100%;
-}
- 
-input::placeholder {
-	 color: #6d7f8f;
+.corner {
+  position: fixed;
+  float: right;
+  border: 1px solid black;
+  padding: 1em;
+  background-color: #FFF;
+  margin-left: 86vw;
+  margin-top: 29vh;
+  border-radius: 10px 10px 0px 0px;
+  z-index: 1;
 }
 
-input:focus {
-	 outline: none;
-	 color: #6d7f8f;
-	 background-color: #eff5fa;
+.larry {
+  width: 40%;
 }
- 
-.InputContainer {
-	 --top-shadow: inset 1px 1px 3px #c5d4e3, inset 2px 2px 6px #c5d4e3;
-	 --bottom-shadow: inset -2px -2px 4px rgba(255, 255, 255, .7);
-	 position: relative;
-	 border-radius: var(--border-radius);
-	 overflow: hidden;
-}
- 
-.InputContainer:before, .InputContainer:after {
-	 left: 0;
-	 top: 0;
-	 display: block;
-	 content: "";
-	 pointer-events: none;
-	 width: 100%;
-	 height: 100%;
-	 position: absolute;
-}
- 
-.InputContainer:before {
-	 box-shadow: var(--bottom-shadow);
-}
- 
-.InputContainer:after {
-	 box-shadow: var(--top-shadow);
-}
- 
+
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
   margin-left: -125px; /* Divide value of min-width by 2 */
-  background: linear-gradient(-67deg, rgba(200, 216, 231, .7), rgba(255, 255, 255, .8));
+  background-image: linear-gradient(90deg, rgb(210, 184, 131) 50%, rgba(0, 0, 0, 0.73)),
+  url('https://img.freepik.com/free-vector/abstract-geometric-pattern_1319-110.jpg?w=740&t=st=1715503724~exp=1715504324~hmac=0c510c9538fbb5ce0ecf6c8257d6bef4796e2c16f048f36a493fa089616f6117');
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 2px; /* Rounded borders */
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
+  z-index: 6; /* Add a z-index if needed */
   left: 50%; /* Center the snackbar */
   bottom: 30px; /* 30px from the bottom */
   font-family: "Orbitron", sans-serif;
@@ -217,3 +224,4 @@ input:focus {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 } 
+
